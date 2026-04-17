@@ -4,6 +4,7 @@ const rateInput = document.getElementById('rate');
 const toggleBtn = document.getElementById('toggle');
 const burnedDisplay = document.getElementById('burned');
 const elapsedDisplay = document.getElementById('elapsed');
+const timerRow = document.getElementById('timerRow');
 
 // Стан таймера
 let intervalId = null;        // ідентифікатор setInterval
@@ -39,7 +40,7 @@ function updateDisplays() {
     // Формула: спалено = учасники * ставка * (секунди / 3600)
     const burned = participants * rate * (elapsedSeconds / 3600);
 
-    burnedDisplay.textContent = `${burned.toFixed(2)} грн`;
+    burnedDisplay.textContent = burned.toFixed(2);
     elapsedDisplay.textContent = formatTime(elapsedSeconds);
 }
 
@@ -56,6 +57,9 @@ function start() {
     toggleBtn.textContent = 'Стоп';
     toggleBtn.classList.remove('btn-start');
     toggleBtn.classList.add('btn-stop');
+
+    // Вмикаємо пульсацію точки біля таймера
+    timerRow.classList.add('is-running');
 
     // Оновлення дисплею кожні 100 мс
     intervalId = setInterval(updateDisplays, 100);
@@ -78,6 +82,9 @@ function stop() {
     toggleBtn.textContent = 'Старт';
     toggleBtn.classList.remove('btn-stop');
     toggleBtn.classList.add('btn-start');
+
+    // Вимикаємо пульсацію точки
+    timerRow.classList.remove('is-running');
 
     // Фіксуємо останнє значення на екрані
     updateDisplays();
