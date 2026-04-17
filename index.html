@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грошопал</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="card">
+        <header class="header">
+            <h1 class="title">Грошопал</h1>
+            <p class="subtitle">скільки горить ваша зустріч</p>
+        </header>
+
+        <div class="inputs">
+            <div class="field">
+                <label for="participants">Кількість учасників</label>
+                <input type="number" id="participants" min="1" value="3">
+            </div>
+
+            <div class="field">
+                <label for="rate">Середня годинна ставка (грн/год)</label>
+                <input type="number" id="rate" min="0" value="500">
+            </div>
+        </div>
+
+        <div class="hero">
+            <span class="hero-number" id="burned">0.00</span>
+            <span class="hero-currency">грн</span>
+        </div>
+
+        <div class="timer" id="timerRow">
+            <span class="timer-dot" aria-hidden="true"></span>
+            <span class="timer-text" id="elapsed">00:00:00</span>
+        </div>
+
+        <button id="toggle" class="btn btn-start">Старт</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
